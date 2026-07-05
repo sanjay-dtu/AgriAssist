@@ -12,16 +12,6 @@ Built using **React, Vite, TypeScript, Node.js, Express, Supabase, Tailwind CSS*
 
 ---
 
-## 📸 Screenshots
-
-### Home Page
-![Home Page](public/screenshots/landing.png)
-
-### Secure Authentication (TouchID/FaceID Support)
-![Login Page](public/screenshots/login.png)
-
----
-
 # ✨ Key Features
 
 ## 🤖 AI-Powered Agricultural Assistant
