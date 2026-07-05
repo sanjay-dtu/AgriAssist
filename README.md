@@ -1,108 +1,290 @@
-# 🌱 AgriAssist — Premium AI-Powered Agricultural Intelligence System
+# 🌱 AgriAssist – AI-Powered Agricultural Assistant
 
-AgriAssist is a state-of-the-art, web-based platform designed to provide farmers, researchers, and enthusiasts with instant access to agricultural advice, real-time weather alerts, commodity market prices, and a supportive community.
+An intelligent full-stack web platform that empowers farmers with AI-driven crop guidance, weather insights, live market prices, government schemes, and a collaborative farming community.
 
-Built using **React**, **Vite**, **TypeScript**, **Node.js/Express**, **Supabase**, and powered by **Google Gemini AI**.
-
----
-
-## 🚀 Key Features & Architecture
-
-* **🤖 Multimodal AI Assistant (Gemini)**: An intelligent agricultural bot capable of processing text queries, analyzing uploaded leaf/crop images for disease detection, and transcribing speech-to-text (STT) queries directly from web browsers.
-* **🔐 Passkey & Biometric Authentication**: Modern, passwordless authentication using TouchID, FaceID, or Windows Hello. Integrated with `@simplewebauthn` and Supabase magic links for seamless, secure user profiles.
-* **☁️ Weather Forecasting & Alerts**: Live weather updates tailored to the user's location with automated alert triggers for adverse climatic conditions (squalls, storms, tornadoes) to help plan farming activities.
-* **🌾 Real-Time Community Forum & Chatrooms**: Group discussion rooms and community forum posts with instant, real-time database updates powered by Supabase real-time channels.
-* **📈 Cache-Based Market Prices**: Direct access to local agricultural commodity pricing, fetched securely and optimized using a cached database storage layer.
-* **🛡️ Secure Backend Proxy (Advisory)**: Moves sensitive crop advisory prompts and Gemini API invocations to secure Node.js server routes and Vercel serverless functions to avoid client-side API key leakage.
+Built using **React, Vite, TypeScript, Node.js, Express, Supabase, Tailwind CSS**, and powered by **Google Gemini AI** to deliver a modern and accessible digital farming experience.
 
 ---
 
-## 🗺️ System Design & Workflow
+## 🌐 Live Demo
 
+**🔗 Live Application:** https://agriassist-frontend-u9gr.onrender.com
+
+---
+
+## 📸 Screenshots
+
+### Home Page
+![Home Page](public/screenshots/landing.png)
+
+### Secure Authentication (TouchID/FaceID Support)
+![Login Page](public/screenshots/login.png)
+
+---
+
+# ✨ Key Features
+
+## 🤖 AI-Powered Agricultural Assistant
+
+* Multi-language AI chatbot powered by **Google Gemini AI**
+* Personalized crop guidance based on user inputs
+* Speech-to-Text support using **Hugging Face Whisper**
+* Image upload support for crop-related queries
+* Context-aware agricultural recommendations
+
+---
+
+## 🌦 Weather Insights
+
+* Real-time weather forecasts
+* Location-based weather information
+* Farming recommendations based on weather conditions
+* Early awareness for adverse weather situations
+
+---
+
+## 📈 Live Market Prices
+
+* Real-time agricultural commodity prices
+* Easy access to crop market information
+* Supports better selling and planning decisions
+
+---
+
+## 🌾 Farmer Productivity Toolkit
+
+* Daily farming task manager
+* Crop planning assistance
+* Seed rate calculator
+* Fertilizer conversion calculator
+* Yield estimation tools
+
+---
+
+## 🏛 Government Schemes
+
+* Browse agricultural schemes
+* Explore farmer subsidies
+* Access government welfare initiatives
+
+---
+
+## 🌍 Community Platform
+
+* Create and share community posts
+* Participate in farming discussions
+* "My Posts" dashboard
+* Real-time chat rooms
+* Knowledge sharing among farmers
+
+---
+
+## 🔐 Secure Authentication
+
+* Supabase Authentication
+* Passwordless login
+* Magic Link Authentication
+* WebAuthn / Biometric Authentication
+* Secure user profile management
+
+---
+
+## 📱 Responsive Design
+
+* Mobile-first interface
+* Optimized for desktop, tablet, and smartphones
+* Clean UI built using Tailwind CSS and shadcn/ui
+
+---
+
+# 🛠️ Technology Stack
+
+### Frontend
+
+* React
+* Vite
+* TypeScript
+* Tailwind CSS
+* shadcn/ui
+* React Router
+
+### Backend
+
+* Node.js
+* Express.js
+
+### Database & Backend Services
+
+* Supabase PostgreSQL
+* Supabase Authentication
+* Supabase Storage
+* Supabase Realtime
+
+### AI & External APIs
+
+* Google Gemini AI (gemini-2.5-flash)
+* Hugging Face Whisper API
+* OpenWeatherMap API
+
+---
+
+# 🏗️ System Overview
+
+```text
+                           User
+                             │
+                             ▼
+                   React + Vite Frontend
+                             │
+          ┌──────────────────┼──────────────────┐
+          ▼                  ▼                  ▼
+     Express API        Google Gemini       Supabase
+          │                  │                  │
+          │                  │                  ├── Authentication
+          │                  │                  ├── PostgreSQL Database
+          │                  │                  ├── Storage
+          │                  │                  └── Realtime Services
+          ▼
+ OpenWeatherMap API • Hugging Face Whisper • Market Data
 ```
-                        [ User Login Page ]
-                          /            \
-                 (Passwordless)     (Email & Password)
-                     /                      \
-            [Passkey Auth / WebAuthn]     [Supabase Auth]
-                   \                        /
-                    v                      v
-                [ -------- Dashboard Hub -------- ]
-                /           |            |        \
-               /            |            |         \
-              v             v            v          v
-       [Weather API]  [Market Prices] [Community] [AI Assistant]
-             |              |            |          /    |    \
-      (Severe Alerts) (Edge Cached) (Real-Time)  (Text) (STT) (Vision)
-```
 
 ---
 
-## 🛠️ Tech Stack
+# 🚀 Getting Started
 
-* **Frontend Client**: React (v18), Vite, TypeScript, Tailwind CSS, shadcn/ui, React Router, Lucide Icons, Recharts (for visualization)
-* **Backend API Server**: Node.js, Express, `tsx` (TypeScript runtime runner)
-* **Serverless Functions**: Vercel Serverless Functions (located in `api/`) for production API endpoints
-* **Database & BaaS**: Supabase (PostgreSQL, Storage buckets for crop images, Edge Functions, real-time channels)
-* **AI/LLM Engine**: Google Gemini API (`gemini-2.5-flash`), Speech-to-Text via base64 inline audio data
-* **Authentication**: WebAuthn (`@simplewebauthn/server` & `@simplewebauthn/browser`), JWT, Supabase Admin Magic Links
-* **External APIs**: OpenWeatherMap API
+## Prerequisites
+
+* Node.js (v18 or above)
+* Git
 
 ---
 
-## ⚙️ Quick Start
+## Clone the Repository
 
-### 1. Prerequisites
-- **Node.js** (v18+ installed)
-- **Supabase CLI** (for managing backend edge functions/migrations)
-- **Gemini API Key** (Get yours from [Google AI Studio](https://aistudio.google.com/apikey))
-- **OpenWeatherMap API Key** (Get yours from [OpenWeatherMap](https://openweathermap.org/api) for live weather features)
-
-### 2. Installation
-Clone the repository and install root dependencies:
 ```bash
-# Clone the repository
-git clone <YOUR_GIT_URL>
-cd agriassist
+git clone https://github.com/sanjay-dtu/AgriAssist.git
 
-# Install dependencies
+cd AgriAssist
+
 npm install
 ```
 
-### 3. Environment Setup
-Create a `.env` file in the root directory:
-```bash
-touch .env
-```
-Populate `.env` with the following variables:
+---
+
+## Environment Variables
+
+Create a `.env` file in the project root.
+
 ```env
-# Supabase Configuration (Get from Supabase Settings -> API)
-VITE_SUPABASE_URL="https://your-project-id.supabase.co"
-VITE_SUPABASE_PUBLISHABLE_KEY="your-anon-key"
-SUPABASE_SERVICE_ROLE_KEY="your-service-role-key"
+# Supabase Configuration
+VITE_SUPABASE_URL=
 
-# AI & Weather API Keys
-GEMINI_API_KEY="your-gemini-api-key"
-OPENWEATHERMAP_API_KEY="your-openweathermap-api-key"
-HUGGINGFACE_API_KEY="your-huggingface-api-key"  # Optional, for speech-to-text
+VITE_SUPABASE_PUBLISHABLE_KEY=
+
+SUPABASE_SERVICE_ROLE_KEY=
+
+# Google Gemini AI
+VITE_GEMINI_API_KEY=
+
+GEMINI_API_KEY=
+
+# Weather API
+OPENWEATHERMAP_API_KEY=
+
+# Speech-to-Text
+HUGGINGFACE_API_KEY=
 ```
 
-### 4. Database Setup
-Ensure migrations are pushed to your Supabase instance:
-```bash
-# Link your local repository to your Supabase project
-npx supabase link --project-ref <YOUR_PROJECT_ID>
+---
 
-# Apply local migrations to the database
-npx supabase db push
-```
+## Run Locally
 
-### 5. Running the Application
-Start the frontend development server and the unified Node.js API server concurrently:
 ```bash
 npm start
 ```
-The application will be available at **[http://localhost:8080](http://localhost:8080)**, proxying API requests to port `3000`.
+
+Frontend
+
+```text
+http://localhost:8080
+```
+
+Backend
+
+```text
+http://localhost:3000
+```
 
 ---
-Developed by Sanjay Kumar
+
+# ☁️ Deployment
+
+The application is deployed on **Render** using a unified deployment architecture where the Express server serves both the backend APIs and the React frontend.
+
+**Live URL**
+
+https://agriassist-frontend-u9gr.onrender.com
+
+---
+
+# 🚧 Challenges Faced
+
+Developing **AgriAssist** involved solving several practical challenges that are common in modern AI-powered full-stack applications.
+
+### 🔄 Frontend & Backend Integration
+
+Coordinating communication between the React frontend and Express backend required careful API design, routing, and asynchronous request handling. Ensuring smooth data flow across multiple modules while maintaining responsiveness was one of the key development challenges.
+
+---
+
+### 🌐 Production Deployment
+
+Deploying the application was significantly different from running it locally. Configuring the project for Render, defining appropriate build and start commands, managing environment variables securely, and ensuring both frontend and backend worked together in production required multiple deployment iterations before achieving a stable setup.
+
+---
+
+### 🔐 Secure API Key Management
+
+The platform integrates multiple third-party services including Google Gemini AI, Supabase, OpenWeatherMap, and Hugging Face. Keeping API keys secure while allowing seamless communication required moving sensitive operations to the backend and using environment variables instead of exposing credentials on the client side.
+
+---
+
+### 🤖 AI Response Reliability
+
+AI-generated responses can sometimes be delayed or return unexpected results. Proper validation, error handling, and fallback mechanisms were implemented to improve reliability and provide users with meaningful feedback even when external AI services encounter issues.
+
+---
+
+### 🗄 Managing Real-Time Features
+
+Building community discussions and chat rooms required synchronizing user-generated content across multiple clients in real time. Implementing these features using Supabase Realtime while maintaining consistency and performance presented an important architectural challenge.
+
+---
+
+### 📱 Responsive User Experience
+
+Creating a seamless experience across desktops, tablets, and smartphones involved extensive UI optimization and testing. The interface was carefully designed to remain intuitive and accessible regardless of screen size.
+
+---
+
+### ⚙ Cross-Platform Development
+
+The project was developed with compatibility in mind, ensuring that development and execution worked reliably across Windows, macOS, and Linux by avoiding operating system-specific dependencies and adopting cross-platform tooling.
+
+---
+
+### 📈 Scalability & Maintainability
+
+As features such as AI assistance, weather forecasting, market prices, calculators, authentication, and community modules were integrated, maintaining a modular architecture became essential. Reusable components, organized folder structures, and well-defined backend services were adopted to simplify future development and maintenance.
+
+---
+
+# 🔮 Upcoming Features (Roadmap)
+
+We are constantly working to make AgriAssist the ultimate tool for modern farming. Here is what we are planning next:
+
+* **Offline Mode (PWA):** Access critical farm data, tasks, and calculators even without an internet connection.
+* **AI Crop Disease Diagnostics:** A computer-vision model allowing farmers to scan infected leaves using their phone camera and instantly receive treatment recommendations.
+* **IoT Data Integration:** Connect AgriAssist with smart soil moisture and temperature sensors for real-time farm monitoring.
+* **Hyper-Local Weather Alerts:** SMS or push notifications for incoming extreme weather events (frost, heavy rains, drought warnings) based on exact farm coordinates.
+* **Market Price Trends & Forecasting:** Interactive historical graphs and AI predictions for future crop prices to help farmers decide the most profitable time to sell.
