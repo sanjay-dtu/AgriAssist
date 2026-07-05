@@ -33,7 +33,7 @@ services:
       # NOTE: If your backend URL on Render is different, update this URL.
       - type: rewrite
         source: /api/*
-        destination: https://agriassist-backend.onrender.com/api/*
+        destination: https://agriassist-backend-injd.onrender.com/api/*
       # SPA fallback routing
       - type: rewrite
         source: /*
