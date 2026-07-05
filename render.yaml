@@ -21,8 +21,9 @@ services:
         sync: false
 
   # 2. Frontend React Client (Static Site)
-  - type: static
+  - type: web
     name: agriassist-frontend
+    runtime: static
     buildCommand: npm run build
     staticPublishPath: ./dist
     routes:
